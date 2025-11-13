@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Virtual Octopus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Ambient background animations -->
+  <div class="ambient-bg">
+    <!-- Floating fish 1 (small, left side) -->
+    <div class="ambient-fish fish-small" style="--delay: 0s; --duration: 20s; --offset: 0%;">
+      <svg viewBox="0 0 50 25" width="50" height="25">
+        <defs><linearGradient id="fishGrad1" x1="0" x2="1"><stop offset="0%" stop-color="#ffaa44"/><stop offset="100%" stop-color="#ff8833"/></linearGradient></defs>
+        <ellipse cx="20" cy="12" rx="12" ry="7" fill="url(#fishGrad1)"/>
+        <circle cx="30" cy="12" r="6" fill="url(#fishGrad1)"/>
+        <circle cx="34" cy="11" r="1.5" fill="#fff"/>
+        <path d="M 8 12 L 0 8 L 0 16 Z" fill="#ff7722"/>
+      </svg>
+    </div>
+    
+    <!-- Floating fish 2 (medium, right side) -->
+    <div class="ambient-fish fish-medium" style="--delay: 3s; --duration: 25s; --offset: 20%;">
+      <svg viewBox="0 0 60 30" width="60" height="30">
+        <defs><linearGradient id="fishGrad2" x1="0" x2="1"><stop offset="0%" stop-color="#ff9966"/><stop offset="100%" stop-color="#ff6644"/></linearGradient></defs>
+        <ellipse cx="25" cy="15" rx="15" ry="8" fill="url(#fishGrad2)"/>
+        <circle cx="37" cy="15" r="7" fill="url(#fishGrad2)"/>
+        <circle cx="42" cy="13" r="2" fill="#fff"/>
+        <path d="M 10 15 L 0 9 L 0 21 Z" fill="#ff5533"/>
+      </svg>
+    </div>
+    
+    <!-- Floating fish 3 (small, center) -->
+    <div class="ambient-fish fish-small" style="--delay: 6s; --duration: 22s; --offset: 40%;">
+      <svg viewBox="0 0 50 25" width="50" height="25">
+        <defs><linearGradient id="fishGrad3" x1="0" x2="1"><stop offset="0%" stop-color="#ffbb55"/><stop offset="100%" stop-color="#ff9933"/></linearGradient></defs>
+        <ellipse cx="20" cy="12" rx="12" ry="7" fill="url(#fishGrad3)"/>
+        <circle cx="30" cy="12" r="6" fill="url(#fishGrad3)"/>
+        <circle cx="34" cy="11" r="1.5" fill="#fff"/>
+        <path d="M 8 12 L 0 8 L 0 16 Z" fill="#ff8844"/>
+      </svg>
+    </div>
+    
+    <!-- Floating fish 4 (large, left-center) -->
+    <div class="ambient-fish fish-large" style="--delay: 2s; --duration: 28s; --offset: 60%;">
+      <svg viewBox="0 0 70 35" width="70" height="35">
+        <defs><linearGradient id="fishGrad4" x1="0" x2="1"><stop offset="0%" stop-color="#ff8844"/><stop offset="100%" stop-color="#ff6633"/></linearGradient></defs>
+        <ellipse cx="28" cy="17" rx="18" ry="10" fill="url(#fishGrad4)"/>
+        <circle cx="43" cy="17" r="9" fill="url(#fishGrad4)"/>
+        <circle cx="49" cy="15" r="2.5" fill="#fff"/>
+        <path d="M 10 17 L 0 9 L 0 25 Z" fill="#ff5522"/>
+      </svg>
+    </div>
+    
+    <!-- Floating fish 5 (medium, right side) -->
+    <div class="ambient-fish fish-medium" style="--delay: 5s; --duration: 24s; --offset: 80%;">
+      <svg viewBox="0 0 60 30" width="60" height="30">
+        <defs><linearGradient id="fishGrad5" x1="0" x2="1"><stop offset="0%" stop-color="#ffaa44"/><stop offset="100%" stop-color="#ff7733"/></linearGradient></defs>
+        <ellipse cx="25" cy="15" rx="15" ry="8" fill="url(#fishGrad5)"/>
+        <circle cx="37" cy="15" r="7" fill="url(#fishGrad5)"/>
+        <circle cx="42" cy="13" r="2" fill="#fff"/>
+        <path d="M 10 15 L 0 9 L 0 21 Z" fill="#ff6633"/>
+      </svg>
+    </div>
+    
+    <!-- Floating seaweed 1 -->
+    <div class="ambient-seaweed" style="--delay: 1s; --duration: 26s; --offset: 15%;">
+      <svg viewBox="0 0 20 100" width="20" height="100">
+        <path d="M 10 0 Q 5 25 8 50 Q 3 75 10 100" stroke="#2d8a4d" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.6"/>
+      </svg>
+    </div>
+    
+    <!-- Floating seaweed 2 -->
+    <div class="ambient-seaweed" style="--delay: 4s; --duration: 30s; --offset: 70%;">
+      <svg viewBox="0 0 20 100" width="20" height="100">
+        <path d="M 10 0 Q 15 30 12 60 Q 17 85 10 100" stroke="#3a9d5d" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.6"/>
+      </svg>
+    </div>
+    
+    <!-- Floating particles/bubbles -->
+    <div class="ambient-particle" style="--delay: 0.5s; --duration: 8s; --offset: 25%;"></div>
+    <div class="ambient-particle" style="--delay: 2s; --duration: 10s; --offset: 35%;"></div>
+    <div class="ambient-particle" style="--delay: 3.5s; --duration: 9s; --offset: 55%;"></div>
+    <div class="ambient-particle" style="--delay: 1.5s; --duration: 11s; --offset: 75%;"></div>
+    <div class="ambient-particle" style="--delay: 4s; --duration: 8.5s; --offset: 45%;"></div>
+  </div>
+
+  <main class="app">
+    <header>
+      <h1>Care for Your Virtual Octopus</h1>
+      <p class="tag">Feed it, give it toys, and chat — it loves jokes!</p>
+    </header>
+
+    <section class="game">
+      <div class="octopus-area">
+        <!-- Inline SVG octopus - detailed version -->
+        <div id="octopus" class="octopus">
+          <svg viewBox="0 0 240 280" aria-labelledby="octTitle octDesc" role="img" class="octopus-svg">
+            <title id="octTitle">Friendly octopus</title>
+            <desc id="octDesc">A cute expressive octopus that reacts to your interactions with animations and color changes.</desc>
+            <defs>
+              <linearGradient id="bodyGrad" x1="0" x2="1" y1="0" y2="1">
+                <stop offset="0%" stop-color="#b66cf9" />
+                <stop offset="100%" stop-color="#7b3df2" />
+              </linearGradient>
+              <radialGradient id="eyeGloss">
+                <stop offset="0%" stop-color="#fff" stop-opacity="1" />
+                <stop offset="70%" stop-color="#e0e0ff" stop-opacity="0.3" />
+              </radialGradient>
+              <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+                <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.3"/>
+              </filter>
+            </defs>
+            
+            <!-- body (main head/mantle) -->
+            <g id="body-group" transform="translate(120,80)">
+              <!-- shading/depth -->
+              <ellipse cx="0" cy="-2" rx="46" ry="40" fill="rgba(0,0,0,0.08)" class="body-shadow"/>
+              <!-- main body -->
+              <ellipse cx="0" cy="0" rx="45" ry="40" fill="url(#bodyGrad)" filter="url(#shadow)" class="body"/>
+              <!-- highlight -->
+              <ellipse cx="-14" cy="-16" rx="18" ry="14" fill="#fff" opacity="0.15"/>
+            </g>
+            
+            <!-- tentacles (8 arms) -->
+            <g id="tentacles-group" class="tentacles" transform="translate(120,120)">
+              <!-- left side tentacles (1-4) -->
+              <g class="tent-wrapper" style="transform-origin: -45px 0">
+                <path class="tent tent-1" d="M -45 0 Q -70 15 -75 45 Q -78 65 -65 85" stroke="#7b3df2" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <g class="suction-cups">
+                  <circle cx="-68" cy="30" r="3.5" fill="#9b5cf5" opacity="0.7"/>
+                  <circle cx="-73" cy="48" r="3.5" fill="#9b5cf5" opacity="0.7"/>
+                  <circle cx="-70" cy="66" r="3.5" fill="#9b5cf5" opacity="0.7"/>
+                </g>
+              </g>
+              <g class="tent-wrapper" style="transform-origin: -25px 0">
+                <path class="tent tent-2" d="M -25 0 Q -45 25 -48 60 Q -47 80 -35 95" stroke="#8b4ff5" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <g class="suction-cups">
+                  <circle cx="-42" cy="35" r="3.5" fill="#9b5cf5" opacity="0.7"/>
+                  <circle cx="-48" cy="55" r="3.5" fill="#9b5cf5" opacity="0.7"/>
+                  <circle cx="-42" cy="75" r="3.5" fill="#9b5cf5" opacity="0.7"/>
+                </g>
+              </g>
+              <g class="tent-wrapper" style="transform-origin: 0px 0">
+                <path class="tent tent-3" d="M 0 0 Q -8 35 -2 75 Q 8 95 20 105" stroke="#7b3df2" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <g class="suction-cups">
+                  <circle cx="-6" cy="45" r="3.5" fill="#9b5cf5" opacity="0.7"/>
+                  <circle cx="-4" cy="65" r="3.5" fill="#9b5cf5" opacity="0.7"/>
+                  <circle cx="5" cy="85" r="3.5" fill="#9b5cf5" opacity="0.7"/>
+                </g>
+              </g>
+              <g class="tent-wrapper" style="transform-origin: 25px 0">
+                <path class="tent tent-4" d="M 25 0 Q 45 25 48 60 Q 47 80 35 95" stroke="#8b4ff5" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <g class="suction-cups">
+                  <circle cx="42" cy="35" r="3.5" fill="#9b5cf5" opacity="0.7"/>
+                  <circle cx="48" cy="55" r="3.5" fill="#9b5cf5" opacity="0.7"/>
+                  <circle cx="42" cy="75" r="3.5" fill="#9b5cf5" opacity="0.7"/>
+                </g>
+              </g>
+              <!-- right side tentacles (5-8) -->
+              <g class="tent-wrapper" style="transform-origin: 45px 0">
+                <path class="tent tent-5" d="M 45 0 Q 70 15 75 45 Q 78 65 65 85" stroke="#7b3df2" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <g class="suction-cups">
+                  <circle cx="68" cy="30" r="3.5" fill="#9b5cf5" opacity="0.7"/>
+                  <circle cx="73" cy="48" r="3.5" fill="#9b5cf5" opacity="0.7"/>
+                  <circle cx="70" cy="66" r="3.5" fill="#9b5cf5" opacity="0.7"/>
+                </g>
+              </g>
+              <g class="tent-wrapper" style="transform-origin: 60px 0">
+                <path class="tent tent-6" d="M 60 0 Q 85 20 92 50 Q 95 70 82 90" stroke="#8b4ff5" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <g class="suction-cups">
+                  <circle cx="82" cy="35" r="3.5" fill="#9b5cf5" opacity="0.7"/>
+                  <circle cx="90" cy="55" r="3.5" fill="#9b5cf5" opacity="0.7"/>
+                  <circle cx="86" cy="75" r="3.5" fill="#9b5cf5" opacity="0.7"/>
+                </g>
+              </g>
+            </g>
+
+            <!-- eyes (expressive) -->
+            <g id="eyes-group" transform="translate(120,70)">
+              <!-- left eye -->
+              <g class="eye left-eye">
+                <circle cx="-18" cy="-8" r="10" fill="#fff" filter="url(#shadow)"/>
+                <circle cx="-18" cy="-8" r="6.5" fill="#000" class="pupil"/>
+                <circle cx="-18" cy="-8" r="10" fill="url(#eyeGloss)" opacity="0.6"/>
+                <circle cx="-20" cy="-10" r="2.5" fill="#fff" opacity="0.8" class="eye-shine"/>
+              </g>
+              <!-- right eye -->
+              <g class="eye right-eye">
+                <circle cx="18" cy="-8" r="10" fill="#fff" filter="url(#shadow)"/>
+                <circle cx="18" cy="-8" r="6.5" fill="#000" class="pupil"/>
+                <circle cx="18" cy="-8" r="10" fill="url(#eyeGloss)" opacity="0.6"/>
+                <circle cx="16" cy="-10" r="2.5" fill="#fff" opacity="0.8" class="eye-shine"/>
+              </g>
+            </g>
+
+            <!-- mouth (smile/expression) -->
+            <g id="mouth-group" transform="translate(120,85)">
+              <path class="mouth" d="M -16 4 Q 0 14 16 4" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
+            </g>
+          </svg>
+        </div>
+        <div id="bubbles" class="bubbles"></div>
+        
+        <!-- Fish animation on feed -->
+        <div id="fish-container" class="fish-container">
+          <svg id="fish" class="fish" viewBox="0 0 80 40" width="60" height="30">
+            <defs>
+              <linearGradient id="fishGrad" x1="0" x2="1">
+                <stop offset="0%" stop-color="#ff8c42"/>
+                <stop offset="100%" stop-color="#ffa500"/>
+              </linearGradient>
+            </defs>
+            <!-- fish body -->
+            <ellipse cx="35" cy="20" rx="20" ry="12" fill="url(#fishGrad)"/>
+            <!-- fish head -->
+            <circle cx="52" cy="20" r="10" fill="url(#fishGrad)"/>
+            <!-- fish eye -->
+            <circle cx="58" cy="18" r="2.5" fill="#fff"/>
+            <circle cx="58.5" cy="18" r="1" fill="#000"/>
+            <!-- fish mouth -->
+            <path d="M 60 20 Q 62 20.5 61 22" stroke="#fff" stroke-width="0.5" fill="none"/>
+            <!-- fish tail -->
+            <g class="fish-tail" transform="translate(15, 20)">
+              <path d="M 0 0 L -12 -8 L -12 8 Z" fill="#ff7722" opacity="0.8"/>
+            </g>
+            <!-- fish fin -->
+            <ellipse cx="35" cy="8" rx="4" ry="8" fill="#ff7722" opacity="0.7"/>
+          </svg>
+        </div>
+
+      <aside class="panel">
+        <div class="stats">
+          <div class="stat">
+            <div class="label"><strong>Hunger</strong><span id="hunger">0</span></div>
+            <div class="bar"><div id="hungerBar" class="fill"></div></div>
+          </div>
+
+          <div class="stat">
+            <div class="label"><strong>Happiness</strong><span id="happiness">50</span></div>
+            <div class="bar"><div id="happinessBar" class="fill"></div></div>
+          </div>
+
+          <div class="stat small"><strong>Toys:</strong> <span id="toys">0</span></div>
+        </div>
+
+        <div class="controls">
+          <button id="feedBtn">Feed</button>
+          <button id="toyBtn">Give Toy</button>
+          <button id="resetBtn">Reset</button>
+        </div>
+
+        <div class="chat">
+          <div class="chat-log" id="chatLog"></div>
+          <div class="chat-controls">
+            <input id="chatInput" placeholder="Say something (try: 'joke')" />
+            <button id="chatBtn">Talk</button>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <footer>
+      <small>Made with ❤️ for octopus fans</small>
+    </footer>
+  </main>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
