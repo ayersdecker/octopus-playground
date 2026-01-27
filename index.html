@@ -91,15 +91,15 @@
 
   <main class="app">
     <header>
-      <h1>Care for Oliver the Octopus</h1>
-      <p class="tag">Feed it, give it toys, and chat — it loves jokes!</p>
+      <h1>🐙 Care for Oliver the Octopus</h1>
+      <p class="tag">Feed it, give it toys, and make music with its tentacles!</p>
     </header>
 
     <section class="game">
       <div class="octopus-container">
         <div class="octopus-wrapper">
           <div id="octopus" class="octopus">
-          <svg viewBox="0 0 240 280" aria-labelledby="octTitle octDesc" role="img" class="octopus-svg">
+            <svg viewBox="0 0 240 280" aria-labelledby="octTitle octDesc" role="img" class="octopus-svg">
             <title id="octTitle">Friendly octopus</title>
             <desc id="octDesc">A cute expressive octopus that reacts to your interactions with animations and color changes.</desc>
             <defs>
@@ -126,56 +126,74 @@
               <ellipse cx="-14" cy="-16" rx="18" ry="14" fill="#fff" opacity="0.15"/>
             </g>
             
-            <!-- tentacles (8 arms) -->
+            <!-- tentacles (8 arms) - each plays a musical note -->
             <g id="tentacles-group" class="tentacles" transform="translate(120,120)">
-              <!-- left side tentacles (1-4) -->
-              <g class="tent-wrapper" style="transform-origin: -45px 0">
-                <path class="tent tent-1" d="M -45 0 Q -70 15 -75 45 Q -78 65 -65 85" stroke="#7b3df2" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <!-- far left tentacles -->
+              <g class="tent-wrapper tent-clickable" data-note="C4" style="transform-origin: -55px 0">
+                <path class="tent tent-1" d="M -55 0 Q -85 18 -92 50 Q -95 75 -80 95" stroke="#7b3df2" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
                 <g class="suction-cups">
-                  <circle cx="-68" cy="30" r="3.5" fill="#9b5cf5" opacity="0.7"/>
-                  <circle cx="-73" cy="48" r="3.5" fill="#9b5cf5" opacity="0.7"/>
-                  <circle cx="-70" cy="66" r="3.5" fill="#9b5cf5" opacity="0.7"/>
+                  <circle cx="-82" cy="32" r="4" fill="#9b5cf5" opacity="0.7"/>
+                  <circle cx="-88" cy="52" r="4" fill="#9b5cf5" opacity="0.7"/>
+                  <circle cx="-82" cy="72" r="4" fill="#9b5cf5" opacity="0.7"/>
                 </g>
               </g>
-              <g class="tent-wrapper" style="transform-origin: -25px 0">
-                <path class="tent tent-2" d="M -25 0 Q -45 25 -48 60 Q -47 80 -35 95" stroke="#8b4ff5" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <g class="tent-wrapper tent-clickable" data-note="D4" style="transform-origin: -35px 0">
+                <path class="tent tent-2" d="M -35 0 Q -58 22 -62 55 Q -60 82 -45 100" stroke="#8b4ff5" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
                 <g class="suction-cups">
-                  <circle cx="-42" cy="35" r="3.5" fill="#9b5cf5" opacity="0.7"/>
-                  <circle cx="-48" cy="55" r="3.5" fill="#9b5cf5" opacity="0.7"/>
-                  <circle cx="-42" cy="75" r="3.5" fill="#9b5cf5" opacity="0.7"/>
+                  <circle cx="-55" cy="35" r="4" fill="#9b5cf5" opacity="0.7"/>
+                  <circle cx="-60" cy="56" r="4" fill="#9b5cf5" opacity="0.7"/>
+                  <circle cx="-52" cy="78" r="4" fill="#9b5cf5" opacity="0.7"/>
                 </g>
               </g>
-              <g class="tent-wrapper" style="transform-origin: 0px 0">
-                <path class="tent tent-3" d="M 0 0 Q -8 35 -2 75 Q 8 95 20 105" stroke="#7b3df2" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <!-- left-center tentacles -->
+              <g class="tent-wrapper tent-clickable" data-note="E4" style="transform-origin: -15px 0">
+                <path class="tent tent-3" d="M -15 0 Q -28 30 -25 68 Q -18 92 -5 108" stroke="#7b3df2" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
                 <g class="suction-cups">
-                  <circle cx="-6" cy="45" r="3.5" fill="#9b5cf5" opacity="0.7"/>
-                  <circle cx="-4" cy="65" r="3.5" fill="#9b5cf5" opacity="0.7"/>
-                  <circle cx="5" cy="85" r="3.5" fill="#9b5cf5" opacity="0.7"/>
+                  <circle cx="-24" cy="42" r="4" fill="#9b5cf5" opacity="0.7"/>
+                  <circle cx="-23" cy="64" r="4" fill="#9b5cf5" opacity="0.7"/>
+                  <circle cx="-12" cy="86" r="4" fill="#9b5cf5" opacity="0.7"/>
                 </g>
               </g>
-              <g class="tent-wrapper" style="transform-origin: 25px 0">
-                <path class="tent tent-4" d="M 25 0 Q 45 25 48 60 Q 47 80 35 95" stroke="#8b4ff5" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <g class="tent-wrapper tent-clickable" data-note="F4" style="transform-origin: 5px 0">
+                <path class="tent tent-4" d="M 5 0 Q -2 35 5 75 Q 15 95 28 108" stroke="#8b4ff5" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
                 <g class="suction-cups">
-                  <circle cx="42" cy="35" r="3.5" fill="#9b5cf5" opacity="0.7"/>
-                  <circle cx="48" cy="55" r="3.5" fill="#9b5cf5" opacity="0.7"/>
-                  <circle cx="42" cy="75" r="3.5" fill="#9b5cf5" opacity="0.7"/>
+                  <circle cx="-1" cy="48" r="4" fill="#9b5cf5" opacity="0.7"/>
+                  <circle cx="3" cy="68" r="4" fill="#9b5cf5" opacity="0.7"/>
+                  <circle cx="15" cy="88" r="4" fill="#9b5cf5" opacity="0.7"/>
                 </g>
               </g>
-              <!-- right side tentacles (5-8) -->
-              <g class="tent-wrapper" style="transform-origin: 45px 0">
-                <path class="tent tent-5" d="M 45 0 Q 70 15 75 45 Q 78 65 65 85" stroke="#7b3df2" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <!-- right-center tentacles -->
+              <g class="tent-wrapper tent-clickable" data-note="G4" style="transform-origin: 25px 0">
+                <path class="tent tent-5" d="M 25 0 Q 32 35 30 75 Q 38 95 50 108" stroke="#7b3df2" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
                 <g class="suction-cups">
-                  <circle cx="68" cy="30" r="3.5" fill="#9b5cf5" opacity="0.7"/>
-                  <circle cx="73" cy="48" r="3.5" fill="#9b5cf5" opacity="0.7"/>
-                  <circle cx="70" cy="66" r="3.5" fill="#9b5cf5" opacity="0.7"/>
+                  <circle cx="30" cy="48" r="4" fill="#9b5cf5" opacity="0.7"/>
+                  <circle cx="30" cy="68" r="4" fill="#9b5cf5" opacity="0.7"/>
+                  <circle cx="40" cy="88" r="4" fill="#9b5cf5" opacity="0.7"/>
                 </g>
               </g>
-              <g class="tent-wrapper" style="transform-origin: 60px 0">
-                <path class="tent tent-6" d="M 60 0 Q 85 20 92 50 Q 95 70 82 90" stroke="#8b4ff5" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <g class="tent-wrapper tent-clickable" data-note="A4" style="transform-origin: 45px 0">
+                <path class="tent tent-6" d="M 45 0 Q 62 28 65 65 Q 68 88 55 105" stroke="#8b4ff5" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
                 <g class="suction-cups">
-                  <circle cx="82" cy="35" r="3.5" fill="#9b5cf5" opacity="0.7"/>
-                  <circle cx="90" cy="55" r="3.5" fill="#9b5cf5" opacity="0.7"/>
-                  <circle cx="86" cy="75" r="3.5" fill="#9b5cf5" opacity="0.7"/>
+                  <circle cx="60" cy="42" r="4" fill="#9b5cf5" opacity="0.7"/>
+                  <circle cx="64" cy="62" r="4" fill="#9b5cf5" opacity="0.7"/>
+                  <circle cx="60" cy="84" r="4" fill="#9b5cf5" opacity="0.7"/>
+                </g>
+              </g>
+              <!-- far right tentacles -->
+              <g class="tent-wrapper tent-clickable" data-note="B4" style="transform-origin: 65px 0">
+                <path class="tent tent-7" d="M 65 0 Q 88 20 92 55 Q 92 80 75 100" stroke="#7b3df2" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <g class="suction-cups">
+                  <circle cx="85" cy="35" r="4" fill="#9b5cf5" opacity="0.7"/>
+                  <circle cx="90" cy="56" r="4" fill="#9b5cf5" opacity="0.7"/>
+                  <circle cx="82" cy="78" r="4" fill="#9b5cf5" opacity="0.7"/>
+                </g>
+              </g>
+              <g class="tent-wrapper tent-clickable" data-note="C5" style="transform-origin: 85px 0">
+                <path class="tent tent-8" d="M 85 0 Q 108 18 115 50 Q 118 75 103 95" stroke="#8b4ff5" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <g class="suction-cups">
+                  <circle cx="105" cy="32" r="4" fill="#9b5cf5" opacity="0.7"/>
+                  <circle cx="112" cy="52" r="4" fill="#9b5cf5" opacity="0.7"/>
+                  <circle cx="106" cy="72" r="4" fill="#9b5cf5" opacity="0.7"/>
                 </g>
               </g>
             </g>
@@ -232,8 +250,21 @@
             <ellipse cx="35" cy="8" rx="4" ry="8" fill="#ff7722" opacity="0.7"/>
           </svg>
         </div>
+          </div>
+        </div>
+        <div id="bubbles" class="bubbles"></div>
+      </div>
 
       <aside class="panel">
+        <div class="music-section">
+          <div class="music-header">
+            <span class="music-icon">🎵</span>
+            <strong>Music Mode</strong>
+            <button id="muteBtn" class="icon-btn" title="Toggle Sound">🔊</button>
+          </div>
+          <p class="music-hint">Click Oliver's tentacles to play notes!</p>
+        </div>
+
         <div class="stats">
           <div class="stat">
             <div class="label"><strong>Hunger</strong><span id="hunger">0</span></div>
@@ -252,14 +283,6 @@
           <button id="feedBtn">Feed</button>
           <button id="toyBtn">Give Toy</button>
           <button id="resetBtn">Reset</button>
-        </div>
-
-        <div class="chat">
-          <div class="chat-log" id="chatLog"></div>
-          <div class="chat-controls">
-            <input id="chatInput" placeholder="Say something (try: 'joke')" />
-            <button id="chatBtn">Talk</button>
-          </div>
         </div>
       </aside>
     </section>

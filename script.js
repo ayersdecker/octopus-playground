@@ -1,6 +1,56 @@
-// Enhanced virtual octopus logic
+// Enhanced virtual octopus logic with music
 const DEFAULT = { hunger: 20, happiness: 50, toys: 0 };
 let state = loadState();
+let isMuted = false;
+
+// Web Audio API setup
+const AudioContext = window.AudioContext || window.webkitAudioContext;
+let audioContext = null;
+
+// Initialize audio on user interaction
+function initAudio() {
+  if (!audioContext) {
+    audioContext = new AudioContext();
+  }
+  if (audioContext.state === 'suspended') {
+    audioContext.resume();
+  }
+}
+
+// Note frequencies for a major scale
+const noteFrequencies = {
+  'C4': 261.63,
+  'D4': 293.66,
+  'E4': 329.63,
+  'F4': 349.23,
+  'G4': 392.00,
+  'A4': 440.00,
+  'B4': 493.88,
+  'C5': 523.25
+};
+
+// Play a musical note
+function playNote(frequency, duration = 0.3) {
+  if (isMuted || !audioContext) return;
+  
+  const oscillator = audioContext.createOscillator();
+  const gainNode = audioContext.createGain();
+  
+  oscillator.connect(gainNode);
+  gainNode.connect(audioContext.destination);
+  
+  oscillator.frequency.value = frequency;
+  oscillator.type = 'sine';
+  
+  // Envelope for smooth attack and decay
+  const now = audioContext.currentTime;
+  gainNode.gain.setValueAtTime(0, now);
+  gainNode.gain.linearRampToValueAtTime(0.3, now + 0.01);
+  gainNode.gain.exponentialRampToValueAtTime(0.01, now + duration);
+  
+  oscillator.start(now);
+  oscillator.stop(now + duration);
+}
 
 // DOM refs
 const hungerEl = document.getElementById('hunger');
@@ -11,9 +61,7 @@ const happinessBar = document.getElementById('happinessBar');
 const feedBtn = document.getElementById('feedBtn');
 const toyBtn = document.getElementById('toyBtn');
 const resetBtn = document.getElementById('resetBtn');
-const chatBtn = document.getElementById('chatBtn');
-const chatInput = document.getElementById('chatInput');
-const chatLog = document.getElementById('chatLog');
+const muteBtn = document.getElementById('muteBtn');
 const oct = document.getElementById('octopus');
 const bubbles = document.getElementById('bubbles');
 const octArea = document.querySelector('.octopus-area');
@@ -83,9 +131,6 @@ function react(type){
   oct.classList.add('wiggle');
   setTimeout(()=>oct.classList.remove('wiggle'),700);
   if(Math.random()<0.7) spawnBubbles(type);
-  // small chat message
-  if(type==='fed') postChatOcto("Mmm... thanks! More please later 😊");
-  if(type==='toy') postChatOcto("Yay! Toys are the best — squishy!");
 }
 
 function spawnBubbles(type){
@@ -200,59 +245,74 @@ setInterval(()=>{
   render();
 }, HUNGER_INTERVAL_MS);
 
-// Chat handling
-function postChatUser(text){
-  const p = document.createElement('div'); p.className='msg user'; p.textContent = 'You: ' + text; chatLog.appendChild(p); chatLog.scrollTop = chatLog.scrollHeight;
-}
-function postChatOcto(text){
-  const p = document.createElement('div'); p.className='msg octo'; p.textContent = 'Octopus: ' + text; chatLog.appendChild(p); chatLog.scrollTop = chatLog.scrollHeight;
-}
-function postChatSystem(text){
-  const p = document.createElement('div'); p.className='msg sys'; p.textContent = text; chatLog.appendChild(p); chatLog.scrollTop = chatLog.scrollHeight;
-}
-
-function handleChat(){
-  const text = chatInput.value.trim();
-  if(!text) return;
-  postChatUser(text);
-  chatInput.value='';
-  // simple NLProc: look for 'joke' or 'funny'
-  const lower = text.toLowerCase();
-  if(lower.includes('joke') || lower.includes('funny') || lower.includes('laugh')){
-    const j = jokes[Math.floor(Math.random()*jokes.length)];
-    setTimeout(()=>postChatOcto(j), 600);
-    state.happiness = Math.min(100, state.happiness + 4);
-    saveState(); render();
-    react('chat-joke');
-    return;
-  }
-  // if user says feed or hungry
-  if(lower.includes('hungry') || lower.includes('feed')){
-    setTimeout(()=>postChatOcto("I could use a snack! Try 'Feed' button."),500);
-    return;
-  }
-  // fallback playful replies
-  const replies = [
-    "Blub blub! Tell me another thing.",
-    "That's interesting — do you have a toy?",
-    "I like your hat! (I don't really see hats but I pretend)",
-    "Ooh, that makes my tentacles tingle!",
-    "You're fun! What else can we talk about?"
-  ];
-  const r = replies[Math.floor(Math.random()*replies.length)];
-  setTimeout(()=>postChatOcto(r), 600);
-}
-
 // attach events
 feedBtn.addEventListener('click', feed);
 toyBtn.addEventListener('click', giveToy);
 resetBtn.addEventListener('click', reset);
-chatBtn.addEventListener('click', handleChat);
-chatInput.addEventListener('keydown', (e)=>{ if(e.key==='Enter') handleChat(); });
+
+// Mute button toggle
+if (muteBtn) {
+  muteBtn.addEventListener('click', () => {
+    isMuted = !isMuted;
+    muteBtn.textContent = isMuted ? '🔇' : '🔊';
+    muteBtn.classList.toggle('muted', isMuted);
+  });
+}
+
+// Tentacle click handlers for music
+const tentacles = document.querySelectorAll('.tent-clickable');
+tentacles.forEach(tent => {
+  tent.addEventListener('click', (e) => {
+    initAudio(); // Initialize audio context on first interaction
+    const note = tent.getAttribute('data-note');
+    const frequency = noteFrequencies[note];
+    
+    if (frequency) {
+      playNote(frequency);
+      
+      // Visual feedback
+      tent.classList.add('tent-active');
+      setTimeout(() => tent.classList.remove('tent-active'), 300);
+      
+      // Spawn note visual
+      spawnMusicalNote(e);
+      
+      // Octopus reacts with happiness
+      state.happiness = Math.min(100, state.happiness + 2);
+      saveState();
+      render();
+      
+      // Small wiggle
+      oct.classList.add('wiggle');
+      setTimeout(() => oct.classList.remove('wiggle'), 400);
+    }
+  });
+  
+  // Make tentacles look interactive
+  tent.style.cursor = 'pointer';
+});
+
+// Spawn floating musical note visual
+function spawnMusicalNote(event) {
+  const notes = ['♩', '♪', '♫', '♬'];
+  const note = document.createElement('div');
+  note.className = 'musical-note';
+  note.textContent = notes[Math.floor(Math.random() * notes.length)];
+  
+  const rect = octArea.getBoundingClientRect();
+  note.style.left = (event.clientX - rect.left) + 'px';
+  note.style.top = (event.clientY - rect.top) + 'px';
+  
+  octArea.appendChild(note);
+  
+  // Animate and remove
+  requestAnimationFrame(() => {
+    note.style.transform = 'translateY(-80px) scale(1.5)';
+    note.style.opacity = '0';
+  });
+  
+  setTimeout(() => note.remove(), 800);
+}
 
 // initial render and greeting
 render();
-postChatSystem('Say hi to your octopus! Try feeding it or asking for a joke (type "joke").');
-
-// small accessibility: focus chat on load
-chatInput.focus();
